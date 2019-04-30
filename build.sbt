@@ -6,9 +6,20 @@ version := "0.1.0"
 
 organization := "com.headstorm"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.8"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+val http4sVersion = "0.20.0"
+val sparkVersion = "2.4.2"
+
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+  
+  "org.http4s" %% "http4s-dsl" % http4sVersion,
+  "org.http4s" %% "http4s-blaze-server" % http4sVersion,
+
+  "org.apache.spark" %% "spark-core" % sparkVersion,
+  "org.apache.spark" %% "spark-mllib" % sparkVersion
+)
 
 publishMavenStyle := true
 
