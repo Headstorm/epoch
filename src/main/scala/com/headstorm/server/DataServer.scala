@@ -8,11 +8,14 @@ import org.http4s.dsl.io._
 import org.http4s.implicits._
 import org.http4s.server.blaze._
 
+import com.headstorm.spark._
+
 object Main extends IOApp {
 
   val httpService = HttpRoutes.of[IO] {
-    case GET -> Root / "api"/ "season" / "location" / "latitude"/ latitude / "longitude" / longitude =>
-      (latitude, longitude)
+    case GET -> Root / "api" / "location" / "latitude"/ latitude / "longitude" / longitude / "date" / date =>
+      (latitude, longitude, date)
+      SparkApp.main(Array())
       Ok()
   }.orNotFound
 
